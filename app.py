@@ -69,7 +69,7 @@ if uploaded_file:
 if score > 80:
     if score > 70:
         st.success("Excellent Resume")
-    elif score > 40:
+        elif score > 40:
         st.warning("Good but needs improvement")
     else:
         st.error("Needs Improvement - Add more skills")

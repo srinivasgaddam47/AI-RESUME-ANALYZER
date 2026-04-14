@@ -62,7 +62,11 @@ if uploaded_file:
     st.success(role)
 
     st.subheader("📈 Suggestions")
-
+if uploaded_file:
+    resume_text=extract_text(uploaded_file)
+    found_skills=match_skills(resume_text)
+    score=len(found_skills)/len(skills) * 100
+if score > 80:
     if score > 70:
         st.success("Excellent Resume")
     elif score > 40:

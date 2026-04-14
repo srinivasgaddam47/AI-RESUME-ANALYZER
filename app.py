@@ -72,6 +72,9 @@ if uploaded_file:
 import matplotlib.pyplot as plt
 
 found_skills = []
+resume_text = extract_text(uploaded_file)
+
+found_skills = []
 
 for skill in skills['skills']:
     if skill.lower() in resume_text.lower():

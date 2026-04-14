@@ -71,15 +71,26 @@ if uploaded_file:
         st.error("Needs Improvement - Add more skills")
         
 # Skill Chart (Paste Here)
-st.subheader("📊 Skill Analysis Chart")
+if uploaded_file:
 
-labels = ["Skills Found", "Missing Skills"]
-values = [len(found_skills), len(missing)]
+    resume_text = extract_text(uploaded_file)
 
-fig, ax = plt.subplots()
-ax.pie(values, labels=labels, autopct='%1.1f%%')
-st.pyplot(fig)
+    found_skills = match_skills(resume_text)
 
+    missing = list(set(skills['skills']) - set(found_skills))
+
+    st.subheader("❌ Missing Skills")
+    st.write(missing)
+
+    # Skill Chart
+    st.subheader("📊 Skill Analysis Chart")
+
+    labels = ["Skills Found", "Missing Skills"]
+    values = [len(found_skills), len(missing)]
+
+    fig, ax = plt.subplots()
+    ax.pie(values, labels=labels, autopct='%1.1f%%')
+    st.pyplot(fig)
 if score > 80:
     st.success(" Excellent Resume")
 elif score > 60:

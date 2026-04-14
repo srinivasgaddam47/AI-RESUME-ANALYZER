@@ -22,32 +22,22 @@ def extract_text(file):
 # Upload Resume
 uploaded_file = st.file_uploader("Upload Resume (PDF)", type="pdf")
 
-
-# Run only after upload
 if uploaded_file is not None:
 
-    # Extract Resume Text
     resume_text = extract_text(uploaded_file)
 
-    # Match Skills
     found_skills = []
 
     for skill in skills['skills']:
         if skill.lower() in resume_text.lower():
             found_skills.append(skill)
 
-    # Missing Skills
     missing = list(set(skills['skills']) - set(found_skills))
 
-    # Score Calculation
     score = int((len(found_skills) / len(skills['skills'])) * 100)
 
-    # Show Score
     st.subheader("📊 Resume Score")
-    st.write(f"Your Resume Score: {score}%")
-
-    # Suggestions
-    st.subheader("💡 Suggestions")
+    st.write(score)
 
     if score > 70:
         st.success("Excellent Resume")
@@ -56,15 +46,18 @@ if uploaded_file is not None:
     else:
         st.error("Needs Improvement - Add more skills")
 
-    # Missing Skills
     st.subheader("❌ Missing Skills")
     st.write(missing)
 
-    # Skill Chart
     st.subheader("📈 Skill Analysis Chart")
 
     labels = ["Skills Found", "Missing Skills"]
     values = [len(found_skills), len(missing)]
+
+    fig, ax = plt.subplots()
+    ax.pie(values, labels=labels, autopct='%1.1f%%')
+
+    st.pyplot(fig)
 
     fig, ax = plt.subplots()
     ax.pie(values, labels=labels, autopct='%1.1f%%')

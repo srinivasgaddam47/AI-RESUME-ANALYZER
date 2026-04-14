@@ -70,8 +70,6 @@ if uploaded_file:
     else:
         st.error("Needs Improvement - Add more skills")
         
-st.subheader("❌ Missing Skills")
-st.write(missing)
 # Skill Chart (Paste Here)
 st.subheader("📊 Skill Analysis Chart")
 

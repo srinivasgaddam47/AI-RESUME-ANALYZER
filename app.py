@@ -69,16 +69,7 @@ if uploaded_file:
         st.warning("Good but needs improvement")
     else:
         st.error("Needs Improvement - Add more skills")
-import matplotlib.pyplot as plt
-
-found_skills = []
-
-for skill in skills['skills']:
-    if skill.lower() in resume_text.lower():
-        found_skills.append(skill)
-
-missing = list(set(skills['skills']) - set(found_skills))
-
+        
 st.subheader("❌ Missing Skills")
 st.write(missing)
 # Skill Chart (Paste Here)

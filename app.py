@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import PyPDF2
+import matplotlib.pyplot as plt
 
 # Load Skills Dataset
 skills = pd.read_csv("skills_dataset.csv")

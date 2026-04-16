@@ -34,7 +34,7 @@ def predict_role(found_skills):
         return "General IT Role"
 
 # UI Design
-st.title("🚀 AI Resume Analyzer")
+st.title("AI Resume Analyzer")
 
 uploaded_file = st.file_uploader("Upload Resume (PDF)", type="pdf")
 
@@ -45,24 +45,24 @@ if uploaded_file:
 
     score = len(found_skills) / len(skills) * 100
 
-    st.subheader("📊 Resume Score")
+    st.subheader("Resume Score")
     st.progress(int(score))
     st.write(f"{score:.2f}%")
 
-    st.subheader("✅ Skills Found")
+    st.subheader("Skills Found")
     st.write(found_skills)
 
     missing = list(set(skills['skills']) - set(found_skills))
 
-    st.subheader("❌ Missing Skills")
+    st.subheader(" Missing Skills")
     st.write(missing)
 
     role = predict_role(found_skills)
 
-    st.subheader("🎯 Recommended Role")
+    st.subheader("Recommended Role")
     st.success(role)
 
-    st.subheader("📈 Suggestions")
+    st.subheader(" Suggestions")
 if uploaded_file:
 
     resume_text = extract_text(uploaded_file)
@@ -71,24 +71,24 @@ if uploaded_file:
 
     score = len(found_skills) / len(skills) * 100
 
-    st.subheader("📊 Resume Score")
+    st.subheader("Resume Score")
     st.progress(int(score))
     st.write(f"{score:.2f}%")
 
-    st.subheader("✅ Skills Found")
+    st.subheader("Skills Found")
     st.write(found_skills)
 
     missing = list(set(skills['skills']) - set(found_skills))
 
-    st.subheader("❌ Missing Skills")
+    st.subheader("Missing Skills")
     st.write(missing)
 
     role = predict_role(found_skills)
 
-    st.subheader("🎯 Recommended Role")
+    st.subheader(" Recommended Role")
     st.success(role)
 
-    st.subheader("💡 Suggestions")
+    st.subheader("Suggestions")
 
     if score > 70:
         st.success("Excellent Resume")
@@ -98,7 +98,7 @@ if uploaded_file:
         st.error("Needs Improvement - Add more skills")
 
     # Skill Chart
-    st.subheader("📊 Skill Analysis Chart")
+    st.subheader("Skill Analysis Chart")
 
     labels = ["Skills Found", "Missing Skills"]
     values = [len(found_skills), len(missing)]
